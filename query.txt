@@ -1,0 +1,110 @@
+CREATE DATABASE booking;
+ 
+use booking;
+ 
+CREATE TABLE patients (
+    patient_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) UNIQUE,
+    email VARCHAR(50) UNIQUE,
+    password VARCHAR(50));
+    
+CREATE TABLE doctor (
+    doctor_id INT AUTO_INCREMENT PRIMARY KEY,
+    specialized_category VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    rating DECIMAL(3, 2) DEFAULT 0.0,
+    price DECIMAL(10, 2) NOT NULL
+);
+ 
+-- Inserting data for Cardiologists
+INSERT INTO doctor (specialized_category, name, rating, price) VALUES
+('Cardiologist', 'Dr. John Smith', 4.8, 200.00),
+('Cardiologist', 'Dr. Sarah Johnson', 4.5, 180.00),
+('Cardiologist', 'Dr. Michael Brown', 4.2, 220.00),
+('Cardiologist', 'Dr. Emily Davis', 4.9, 250.00);
+ 
+-- Inserting data for Dermatologists
+INSERT INTO doctor (specialized_category, name, rating, price) VALUES
+('Dermatologist', 'Dr. Jessica White', 4.7, 150.00),
+('Dermatologist', 'Dr. Brian Taylor', 4.6, 170.00),
+('Dermatologist', 'Dr. Olivia Martinez', 4.3, 190.00),
+('Dermatologist', 'Dr. James Wilson', 4.4, 160.00);
+ 
+select * from doctor;
+ 
+ 
+ 
+-- Existing table creation statement for appointments
+CREATE TABLE appoinments (
+    appointment_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_name VARCHAR(255) NOT NULL,
+    age INT,
+    gender VARCHAR(10) NOT NULL,
+    mobile VARCHAR(15)NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    address VARCHAR(255),
+    appointment_time DATETIME NOT NULL,
+    doctor_name VARCHAR(255) NOT NULL,
+    doctor_id INT NOT NULL,
+    reason VARCHAR(255),
+    symptoms VARCHAR(255),
+    ongoing_medications VARCHAR(255),
+    allergies VARCHAR(255),
+    height VARCHAR(10) NOT NULL,
+    weight VARCHAR(10) NOT NULL
+);
+
+
+
+
+-- Create the doctors table
+CREATE TABLE doctors (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
+ 
+-- Inserting data for Cardiologists
+INSERT INTO doctors (name, email, password) VALUES
+('Dr. John Smith', 'john.smith@example.com', 'password123'),
+('Dr. Sarah Johnson', 'sarah.johnson@example.com', 'password456'),
+('Dr. Michael Brown', 'michael.brown@example.com', 'password789'),
+('Dr. Emily Davis', 'emily.davis@example.com', 'passwordabc');
+ 
+-- Inserting data for Dermatologists
+INSERT INTO doctors (name, email, password) VALUES
+('Dr. Jessica White', 'jessica.white@example.com', 'passworddef'),
+('Dr. Brian Taylor', 'brian.taylor@example.com', 'passwordghi'),
+('Dr. Olivia Martinez', 'olivia.martinez@example.com', 'passwordjkl'),
+('Dr. James Wilson', 'james.wilson@example.com', 'passwordmno');
+ 
+ 
+CREATE TABLE completed_consultations (
+    consultation_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_name VARCHAR(255) NOT NULL,
+    age INT,
+    gender VARCHAR(10) NOT NULL,
+    mobile VARCHAR(15) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    address VARCHAR(255),
+    appointment_time DATETIME NOT NULL,
+    doctor_name VARCHAR(255) NOT NULL,
+    reason_for_consultation VARCHAR(255),
+    symptoms VARCHAR(255),
+    ongoing_medications VARCHAR(255),
+    allergies VARCHAR(255),
+    height VARCHAR(10) NOT NULL,
+    weight VARCHAR(10)
+);
+ 
+select * from appointments;
+ 
+
+select * from doctor;
+
+ 
+select * from patients;
+
+
+https://github.com/adhwaithk/medimeetf
